@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FLAMES Calculator</title>
+</head>
+<style>
+  .heading{
+    width : 100%;
+    display : flex;
+    justify-content : center;
+  }
+  .heading > span{
+    border-bottom : 2px solid gold;
+  }
+  .heading > span:nth-child(1){
+    color : red;
+    font-size : 57px;
+    transform : rotate(15deg) skew(5deg);
+  }
+  .heading > span:nth-child(2){
+    color : orange;
+    font-size : 61px;
+    transform : rotate(-15deg) skew(5deg);
+  }
+  .heading > span:nth-child(3){
+    color : yellow;
+    font-size : 57px;
+    transform : rotate(15deg) skew(5deg);
+  }
+  .heading > span:nth-child(4){
+    color : green;
+    font-size : 61px;
+    transform : rotate(-15deg) skew(5deg);
+  }
+  .heading > span:nth-child(5){
+    color : blue;
+    font-size : 57px;
+    transform : rotate(-15deg) skew(5deg);
+  }
+  .heading > span:nth-child(6){
+    color : violet;
+    font-size : 61px;
+    transform : rotate(15deg) skew(5deg);
+  }
+  form{
+     position : absolute;
+     left : 50%;
+     top : 50%;
+     transform : translate(-50%, -50%);
+     display : flex;
+     flex-direction : column;
+     justify-content : space-evenly;
+     align-items : center;
+     width : 240px;
+     height : 300px;
+     border : 1px solid #777;
+     border-radius : 13px;
+     box-shadow : 0 0 5px #010101;
+     background : #DDD;
+  }
+  input{
+    width : 180px;
+    border : none;
+    outline : none;
+    border-bottom : 2px solid green;
+    text-align : center;
+    font-size : 19px;
+    color : blue;
+    background : transparent;
+  }
+  input:hover{
+    border-color : orange;
+  }
+  .submit{
+    border : 1px solid #777;
+    width : 80px;
+    aspect-ratio : 3/1.7;
+    background : wheat;
+    color : blue;
+    border-radius : 5px;
+    cursor : pointer;
+  }
+  .submit:hover{
+    background : blue;
+    color : wheat
+  }
+  .relation{
+    position : absolute;
+    bottom : 100px;
+    left : 50%;
+    transform : translate(-50%, 0px);
+    font-size : 23px;
+  }
+  .word{
+    color : #1E1;
+    font-size : 27px;
+  }
+</style>
+<body>
+<div class="heading">
+    <span>F</span>
+    <span>L</span>
+    <span>A</span>
+    <span>M</span>
+    <span>E</span>
+    <span>S</span>
+</div>
+<form action="response" method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="Name1" name="name1">
+    <input type="text" placeholder="Name2" name="name2">
+    <input type="submit" class="submit">
+</form>
+{% if flag %}
+    <span class="relation">Relation between {{name1}} and {{name2}} is <span class="word">{{relation}}</span></span>
+{% endif %}
+</body>
+</html>
